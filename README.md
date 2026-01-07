@@ -325,3 +325,36 @@ sudo firewall-cmd --reload
 
 
 
+2 Создать свой репозиторий и разместить там ранее собранный RPM.
+
+Установим необходимые инструменты:
+
+```
+sudo dnf install -y createrepo httpd
+```
+
+
+Создадим структуру для репозитория:
+
+```
+sudo mkdir -p /var/www/html/myrepo/x86_64
+```
+
+Скопируем  RPM пакеты ранее созданные в наш репозиторий:
+
+```
+sudo cp ~/rpmbuild/RPMS/x86_64/httpd-*.rpm /var/www/html/myrepo/x86_64/
+ls -lh /var/www/html/myrepo/x86_64/
+```
+<img width="830" height="119" alt="image" src="https://github.com/user-attachments/assets/961aee62-490c-49e6-9eb9-019c931f59e2" />
+
+метаданные репозитория:
+
+```
+sudo createrepo /var/www/html/myrepo/
+```
+<img width="692" height="121" alt="image" src="https://github.com/user-attachments/assets/425177c7-e15e-4cbb-9537-93f612fbd97b" />
+
+
+
+
